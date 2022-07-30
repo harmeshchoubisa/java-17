@@ -19,6 +19,13 @@ public class SampleMethodReference {
         Converter converterLambda = number -> Math.round(100.50);
         System.out.println(converterLambda.round(100.50));
 
+        // method reference with calling instance on a particular object
+        var str = "Zoo";
+        StringStarter stringStarterMethodRef = str::startsWith;
+        StringStarter stringStarterLambda = s -> str.startsWith(s);
+        System.out.println(stringStarterMethodRef.beginningCheck("A"));
+        System.out.println(stringStarterLambda.beginningCheck("A"));
+
     }
 
 }
