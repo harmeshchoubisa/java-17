@@ -30,6 +30,12 @@ public class SampleMethodReference {
         StringTwoParameterChecker methodRefStringTwoParameterChecker = String::startsWith;
         StringTwoParameterChecker lambdaStringTwoParameterChecker = (s, p) -> s.startsWith(p);
         System.out.println(methodRefStringTwoParameterChecker.check("Zoo", "A"));
+
+        // method reference with calling constructor
+        StringCopier methodRefStringCopier = String::new;
+        StringCopier lambdaStringCopier = x -> new String(x);
+        var myString = methodRefStringCopier.copy("Zebra");
+        System.out.println(myString.equals("Zebra"));
         
 
     }
