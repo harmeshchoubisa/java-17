@@ -16,15 +16,21 @@ public class SampleMethodReference {
         // method reference with static method format
         Converter methodRefConverter = Math::round;
         System.out.println(methodRefConverter.round(100.50));
-        Converter converterLambda = number -> Math.round(100.50);
-        System.out.println(converterLambda.round(100.50));
+        Converter lambdaConverter = number -> Math.round(100.50);
+        System.out.println(lambdaConverter.round(100.50));
 
         // method reference with calling instance on a particular object
         var str = "Zoo";
-        StringStarter stringStarterMethodRef = str::startsWith;
-        StringStarter stringStarterLambda = s -> str.startsWith(s);
-        System.out.println(stringStarterMethodRef.beginningCheck("A"));
-        System.out.println(stringStarterLambda.beginningCheck("A"));
+        StringStarter methodRefStringStarter = str::startsWith;
+        System.out.println(methodRefStringStarter.beginningCheck("A"));
+        StringStarter lambdaStringStarter = s -> str.startsWith(s);
+        System.out.println(lambdaStringStarter.beginningCheck("A"));
+
+        // method reference with calling instance on a parameter
+        StringTwoParameterChecker methodRefStringTwoParameterChecker = String::startsWith;
+        StringTwoParameterChecker lambdaStringTwoParameterChecker = (s, p) -> s.startsWith(p);
+        System.out.println(methodRefStringTwoParameterChecker.check("Zoo", "A"));
+        
 
     }
 
