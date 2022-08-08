@@ -37,7 +37,7 @@ public class Climber {
             char start = 'a';
             return start <= c && c <= end;
         };
-        // can compile as all below variables are outside the scope of lambda
+        // can compile as all below variables are outside the scope of lambda and declared below
         char start = 'm';
         char c = 'c';
         chars = null;
