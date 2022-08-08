@@ -1,4 +1,4 @@
-package com.learn.collections;
+package com.learn.collections.reviewqiestions;
 
 import java.util.ArrayDeque;
 
