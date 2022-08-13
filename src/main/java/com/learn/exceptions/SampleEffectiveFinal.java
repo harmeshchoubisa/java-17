@@ -10,10 +10,10 @@ public class SampleEffectiveFinal {
 
         var writer = Files.newBufferedWriter(Path.of("/com/learn/exceptions/abc.txt"));
         // variable used as a try with resource should be final or effectively final
-        try(writer) {
-            writer.append("Welcome to the zoo");
-        }
-        writer = null;
+//        try(writer) {
+//            writer.append("Welcome to the zoo");
+//        }
+//        writer = null;
 
 
 
