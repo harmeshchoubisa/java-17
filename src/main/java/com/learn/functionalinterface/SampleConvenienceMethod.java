@@ -8,10 +8,10 @@ public class SampleConvenienceMethod {
 
 
         // filter brown eggs and other eggs
-        filerEggs();
+        filterEggs();
     }
 
-    private static void filerEggs() {
+    private static void filterEggs() {
 
         Predicate<String> egg = s -> s.contains("egg");
         Predicate<String> brown = s -> s.contains("brown");
