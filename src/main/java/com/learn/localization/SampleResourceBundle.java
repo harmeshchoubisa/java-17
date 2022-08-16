@@ -15,5 +15,12 @@ public class SampleResourceBundle {
     public static void printWelcomeMessage(Locale locale) {
         var rb = ResourceBundle.getBundle("Zoo", locale);
         System.out.println(rb.getString("hello") + "," + rb.getString("open"));
+        printAllValues(rb);
+    }
+
+    public static void printAllValues(ResourceBundle rb) {
+        rb.keySet().stream().
+                map(k -> k + ": " +rb.getString(k)).
+                        forEach(System.out::println);
     }
 }
