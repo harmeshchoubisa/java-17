@@ -17,11 +17,14 @@ public class SampleSingleThreadExecutor {
        // With a single thread executor task are guaranteed to execute sequentially!
         // Still we can see "end" is printed before because that is from main thread which is not a part of executor service
         final ExecutorService service = Executors.newSingleThreadExecutor();
-        System.out.println("begin");
-        service.execute(printInventory);
-        service.execute(printRecords);
-        service.execute(printInventory);
-        System.out.println("end");
-
+        try {
+            System.out.println("begin");
+            service.execute(printInventory);
+            service.execute(printRecords);
+            service.execute(printInventory);
+            System.out.println("end");
+        } finally {
+            service.shutdown();
+        }
     }
 }
