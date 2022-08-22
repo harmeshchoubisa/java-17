@@ -6,15 +6,15 @@ import java.util.concurrent.Executors;
 
 public class SampleCyclicBarrier {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         var service = Executors.newFixedThreadPool(4);
         try {
-           var manager = new SampleCyclicBarrier();
-           var cyclicBarrier1 = new CyclicBarrier(4);
-           var cyclicBarrier2 = new CyclicBarrier(4, ()-> System.out.println("****Pen cleaned!"));
-           for(int i=0; i<4; i++) {
-               service.submit(() -> manager.performTask(cyclicBarrier1, cyclicBarrier2));
-           }
+            var manager = new SampleCyclicBarrier();
+            var cyclicBarrier1 = new CyclicBarrier(4);
+            var cyclicBarrier2 = new CyclicBarrier(4, () -> System.out.println("****Pen cleaned!"));
+            for (int i = 0; i < 4; i++) {
+                service.submit(() -> manager.performTask(cyclicBarrier1, cyclicBarrier2));
+            }
         } finally {
             service.shutdown();
         }
@@ -34,15 +34,13 @@ public class SampleCyclicBarrier {
     }
 
     public void performTask(CyclicBarrier cyclicBarrier1, CyclicBarrier cyclicBarrier2) {
-      removeLions();
         try {
+            removeLions();
             cyclicBarrier1.await();
             cleanPen();
             cyclicBarrier2.await();
             addLions();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (BrokenBarrierException e) {
+        } catch (InterruptedException | BrokenBarrierException e) {
             e.printStackTrace();
         }
 
